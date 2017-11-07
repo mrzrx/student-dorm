@@ -4,13 +4,80 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50.0dip"
-        android:text="请输入您的学号和密码"/>
+        android:text="请输入您的学号和密码"
+        android:textSize="25dip"/>
 
+    <TextView
+        android:id="@+id/xuehao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="学号"
+        android:textSize="25dip"
+        android:layout_marginTop="61dp"
+        android:layout_below="@+id/login"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp" />
+
+    <TextView
+        android:id="@+id/mima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="密码"
+        android:textSize="25dip"
+        android:layout_marginTop="67dp"
+        android:layout_below="@+id/xuehao"
+        android:layout_alignLeft="@+id/xuehao"
+        android:layout_alignStart="@+id/xuehao" />
+
+    <Button
+        android:id="@+id/denglu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:layout_marginBottom="32dp"
+        android:layout_above="@+id/fanhui"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/fanhui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="返回"
+        android:layout_marginBottom="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/denglu"
+        android:layout_alignStart="@+id/denglu" />
+
+    <EditText
+        android:id="@+id/xiexuehao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/xuehao"
+        android:layout_alignBottom="@+id/xuehao"
+        android:layout_toRightOf="@+id/xuehao"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_alignRight="@+id/login"
+        android:layout_alignEnd="@+id/login" />
+
+    <EditText
+        android:id="@+id/xiemima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/mima"
+        android:layout_alignBottom="@+id/mima"
+        android:layout_alignLeft="@+id/xiexuehao"
+        android:layout_alignStart="@+id/xiexuehao"
+        android:layout_alignRight="@+id/login"
+        android:layout_alignEnd="@+id/login" />
 
 
 </RelativeLayout>
