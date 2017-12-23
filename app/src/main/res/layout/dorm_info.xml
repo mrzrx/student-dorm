@@ -37,4 +37,25 @@
         android:text="开始选宿舍"
         android:background="#ffcd2626"
         android:textColor="#ffffffff"/>
+
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/login"
+        android:layout_below="@+id/title"
+        android:gravity="center"
+        android:text="  尊敬的用户，您好！
+        选宿舍之前请认真阅读相关注意事项,预祝您选宿舍成功！
+
+
+                                                       点击下方按钮开始选宿舍"
+        android:textColor="#ffffffff"
+        android:textSize="22.0sp" />
+
+
 </RelativeLayout>
+
+
+

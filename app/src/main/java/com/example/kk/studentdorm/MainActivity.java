@@ -34,6 +34,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Toast.makeText(MainActivity.this,"网络挂了！", Toast.LENGTH_LONG).show();
         }
     }
+
+
     @Override
     public void onClick(View view){
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tishi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请认真核对个人信息，若无错误请开始下一步"
+        android:textSize="20dp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/studentmessege"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tishi">
+    <TextView
+        android:id="@+id/xuehao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="学号：**"/>
+    <TextView
+        android:id="@+id/xingming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xuehao"
+        android:text="姓名：**"/>
+    <TextView
+        android:id="@+id/xingbie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xingming"
+        android:text="性别：**"/>
+    <TextView
+        android:id="@+id/xiaoqu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xingbie"
+        android:text="校区：**"/>
+    <TextView
+        android:id="@+id/nianji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xiaoqu"
+        android:text="年级：**"/>
+    <TextView
+        android:id="@+id/jiaoyanma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nianji"
+        android:text="校验码：**"/>
+    <TextView
+        android:id="@+id/louhao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jiaoyanma"
+        android:text="已选楼号：**"/>
+    <TextView
+        android:id="@+id/sushehao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/louhao"
+        android:text="已选宿舍号：**"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/studentmessege">
+        <Button
+            android:id="@+id/chaxun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        />
+        <Button
+            android:id="@+id/fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chaxun"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
