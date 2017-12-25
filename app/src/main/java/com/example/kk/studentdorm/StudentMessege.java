@@ -3,12 +3,14 @@ package com.example.kk.studentdorm;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kk.util.SslUtils;
@@ -34,7 +36,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
     private String data;
 
     private Button chaxunBtn;
-    private Button fanhuiBtn;
+    private ImageView fanhuiBtn;
 
     private TextView xueHao,xingMing,xingBie,xiaoQu,nianJi,jiaoYanMa,louHao,suSheHao;
 
@@ -97,10 +99,10 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messege);
 
-        chaxunBtn=(Button) findViewById(R.id.chaxun);      //查询按钮
+        chaxunBtn=(Button) findViewById(R.id.jixu);      //查询按钮
         chaxunBtn.setOnClickListener(this);
 
-        fanhuiBtn=(Button) findViewById(R.id.fanhui);                 //返回按钮
+        fanhuiBtn=(ImageView) findViewById(R.id.back);                 //返回按钮
         fanhuiBtn.setOnClickListener(this);
 
         queryMessege();       //查询个人信息
@@ -110,7 +112,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.chaxun){
+        if(v.getId()==R.id.jixu){
             Intent intent = new Intent(StudentMessege.this, RenShu.class);
             startActivity(intent);
             finish();

@@ -23,10 +23,17 @@
         <activity android:name=".LogIn"></activity>
 
 
-    <activity android:name=".StudentMessege">
+    <activity android:name=".StudentMessege"></activity>
 
-    </activity>
+        <activity android:name=".RenShu"></activity>
 
+        <activity android:name=".Select"></activity>
+
+        <activity android:name=".LiangRen"></activity>
+
+        <activity android:name=".SanRen"></activity>
+
+        <activity android:name=".SiRen"></activity>
     </application>
 
 </manifest>

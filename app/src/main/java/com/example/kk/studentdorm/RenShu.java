@@ -40,7 +40,7 @@ public class RenShu extends Activity implements View.OnClickListener{
         renshuBack=(ImageView)findViewById(R.id.renshu_back);
         renshuBack.setOnClickListener(this);
 
-        String[] data_renshu=new String[3];
+        String[] data_renshu=new String[4];
         data_renshu[0]="单人办理";
         data_renshu[1]="两人办理";
         data_renshu[2]="三人办理";

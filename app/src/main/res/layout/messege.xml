@@ -3,86 +3,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/tishi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="请认真核对个人信息，若无错误请开始下一步"
-        android:textSize="20dp"/>
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffcd2626"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="核对个人信息"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/base_action_bar_back_normal"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@+id/back"
+            android:background="#A71717"
+            android:gravity="center"/>
+    </RelativeLayout>
 
 
     <RelativeLayout
         android:id="@+id/studentmessege"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tishi">
+        android:layout_below="@+id/title">
     <TextView
         android:id="@+id/xuehao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="学号：**"/>
+        android:text="学号：**"
+        android:textSize="20dp"/>
     <TextView
         android:id="@+id/xingming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xuehao"
-        android:text="姓名：**"/>
+        android:text="姓名：**"
+        android:textSize="20dp"/>
     <TextView
         android:id="@+id/xingbie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xingming"
-        android:text="性别：**"/>
+        android:text="性别：**"
+        android:textSize="20dp"/>
     <TextView
         android:id="@+id/xiaoqu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xingbie"
-        android:text="校区：**"/>
+        android:text="校区：**"
+        android:textSize="20dp"/>
     <TextView
         android:id="@+id/nianji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xiaoqu"
-        android:text="年级：**"/>
+        android:text="年级：**"
+        android:textSize="20dp"/>
     <TextView
         android:id="@+id/jiaoyanma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nianji"
-        android:text="校验码：**"/>
+        android:text="校验码：**"
+        android:textSize="20dp"/>
     <TextView
         android:id="@+id/louhao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/jiaoyanma"
-        android:text="已选楼号：**"/>
+        android:text="已选楼号：**"
+        android:textSize="20dp"/>
     <TextView
         android:id="@+id/sushehao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/louhao"
-        android:text="已选宿舍号：**"/>
+        android:text="已选宿舍号：**"
+        android:textSize="20dp"/>
     </RelativeLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/studentmessege">
+
+
         <Button
-            android:id="@+id/chaxun"
+            android:id="@+id/jixu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        />
-        <Button
-            android:id="@+id/fanhui"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/chaxun"/>
-    </RelativeLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="33dp"
+            android:layout_centerHorizontal="true"
+            android:text="继续"/>
+
+
 
 
 </RelativeLayout>

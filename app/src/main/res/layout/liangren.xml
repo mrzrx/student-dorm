@@ -3,15 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50.0dip"
-        android:text="请输入同住人信息"
-        android:textSize="25dip"/>
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffcd2626"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="同住人信息"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/base_action_bar_back_normal"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@+id/back"
+            android:background="#A71717"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/title">
     <TextView
         android:id="@+id/xuehao"
         android:layout_width="wrap_content"
@@ -19,11 +45,7 @@
         android:text="学号"
         android:textSize="25dip"
         android:layout_marginTop="61dp"
-        android:layout_below="@+id/tip"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp" />
+        android:layout_marginLeft="44dp" />
     <TextView
         android:id="@+id/jiaoyanma"
         android:layout_width="wrap_content"
@@ -32,29 +54,32 @@
         android:textSize="25dip"
         android:layout_marginTop="67dp"
         android:layout_below="@+id/xuehao"
-        android:layout_alignLeft="@+id/xuehao"
-        android:layout_alignStart="@+id/xuehao" />
+        android:layout_alignLeft="@+id/xuehao" />
     <EditText
         android:id="@+id/xiexuehao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/xuehao"
-        android:layout_alignBottom="@+id/xuehao"
         android:layout_toRightOf="@+id/xuehao"
         android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_alignRight="@+id/tip"
-        android:layout_alignEnd="@+id/tip" />
+        android:minWidth="320px"/>
     <EditText
         android:id="@+id/xiejiaoyanma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/jiaoyanma"
-        android:layout_alignBottom="@+id/jiaoyanma"
-        android:layout_alignLeft="@+id/xiexuehao"
-        android:layout_alignStart="@+id/xiexuehao"
-        android:layout_alignRight="@+id/xiexuehao"
-        android:layout_alignEnd="@+id/xiexuehao" />
+        android:layout_below="@+id/xiexuehao"
+        android:layout_toRightOf="@+id/jiaoyanma"
+        android:minWidth="320px"/>
+</RelativeLayout>
 
 
+    <Button
+        android:id="@+id/jixu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="33dp"
+        android:layout_centerHorizontal="true"
+        android:text="继续"/>
 </RelativeLayout>

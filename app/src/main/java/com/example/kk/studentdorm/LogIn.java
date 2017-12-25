@@ -10,6 +10,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kk.util.NetUtil;
@@ -32,7 +33,7 @@ public class LogIn extends Activity implements View.OnClickListener{
     private static final int LOGIN = 1;
     private int errcode=1;
     private HttpURLConnection connnect;
-    private Button button_fanhui;
+    private ImageView button_fanhui;
     private Button button_denglu;
 
     private Handler mHandler = new Handler(){         //开辟子线程
@@ -72,19 +73,7 @@ public class LogIn extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in);
 
-        // 获取存储的数据
-      /*  SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
-
-        int logInFlag = sp.getInt("logInFlag", 1);
-        if(logInFlag==0){
-            //如果用户已经登录，直接跳转到MainActivity
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            //关闭当前界面
-            finish();
-        }      */
-
-        button_fanhui=(Button)findViewById(R.id.fanhui);       //返回按钮
+        button_fanhui=(ImageView) findViewById(R.id.fanhui);       //返回按钮
         button_fanhui.setOnClickListener(this);
 
         button_denglu=(Button)findViewById(R.id.denglu);       //登录按钮

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -14,30 +15,30 @@ import android.widget.ImageView;
  */
 
 public class SanRen extends Activity implements View.OnClickListener{
-    private ImageView backForward,nextBut2;
+    private ImageView back;
+    private Button jixuBtn;
+    private EditText xueHao1,xueHao2,jiaoYan1,jiaoYan2;
 
-    private EditText xueHao1,xueHao2,xueHao3,xueHao4,yanZhengma1,yanZhengma2,yanZhengma3,yanZhengma4;
-    private int classMateNumbe=0;
 
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.siren);
+        setContentView(R.layout.sanren);
 
-        backForward=(ImageView)findViewById(R.id.backforward1);
-        backForward.setOnClickListener(this);
+        back=(ImageView)findViewById(R.id.back);
+        back.setOnClickListener(this);
 
-        nextBut2=(ImageView)findViewById(R.id.next2);
-        nextBut2.setOnClickListener(this);
+        jixuBtn=(Button) findViewById(R.id.jixu);
+        jixuBtn.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.backforward1){
+        if(v.getId()==R.id.back){
             //清空同学储存信息
-            SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
+           /* SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
             editor.putString("xueHao1","");
             editor.putString("xueHao2","");
             editor.putString("xueHao3","");
@@ -48,67 +49,30 @@ public class SanRen extends Activity implements View.OnClickListener{
             editor.putString("yanZhengma4","");
             classMateNumbe=0;
             editor.putInt("classMateNumbe",classMateNumbe);
-            editor.commit();
+            editor.commit();      */
 
-            Intent intent = new Intent(TogetherSlelect.this, MainActivity.class);
+            Intent intent = new Intent(SanRen.this, StudentMessege.class);
             startActivity(intent);
             finish();
         }
 
-        if(v.getId()==R.id.next2){
-            xueHao1=(EditText)findViewById(R.id.classmxuehao1);
-            xueHao2=(EditText)findViewById(R.id.classmxuehao2);
-            xueHao3=(EditText)findViewById(R.id.classmxuehao3);
-            yanZhengma1=(EditText)findViewById(R.id.classmyanzheng1);
-            yanZhengma2=(EditText)findViewById(R.id.classmyanzheng2);
-            yanZhengma3=(EditText)findViewById(R.id.classmyanzheng3);
+        if(v.getId()==R.id.jixu){
+            xueHao1=(EditText)findViewById(R.id.xiexuehao1);
+            xueHao2=(EditText)findViewById(R.id.xiexuehao2);
+            jiaoYan1=(EditText)findViewById(R.id.xiejiaoyanma1);
+            jiaoYan2=(EditText)findViewById(R.id.xiejiaoyanma2);
 
             // 存储同学信息
-
             SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
             editor.putString("xueHao1",xueHao1.getText().toString());
-            Log.d("myapp","同学1的学号"+xueHao1.getText().toString());
-            classMateNumbe++;
-            editor.putInt("classMateNumbe",classMateNumbe);
-            editor.commit();
-
-
-            SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-            editor.putString("yanZhengma1",yanZhengma1.getText().toString());
-            Log.d("myapp","同学1的验证码"+yanZhengma1.getText().toString());
-            editor.commit();
-
-
-
-            SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
+            editor.putString("jiaoYan1",jiaoYan1.getText().toString());
             editor.putString("xueHao2",xueHao2.getText().toString());
-            Log.d("myapp","同学2的学号"+xueHao2.getText().toString());
-            classMateNumbe++;
-            editor.putInt("classMateNumbe",classMateNumbe);
+            editor.putString("jiaoYan2",jiaoYan2.getText().toString());
+            editor.putInt("Num",3);
             editor.commit();
 
 
-            SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-            editor.putString("yanZhengma2",yanZhengma2.getText().toString());
-            Log.d("myapp","同学2的验证码"+yanZhengma2.getText().toString());
-            editor.commit();
-
-
-            SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-            editor.putString("xueHao3",xueHao3.getText().toString());
-            Log.d("myapp","同学3的学号"+xueHao3.getText().toString());
-            classMateNumbe++;
-            editor.putInt("classMateNumbe",classMateNumbe);
-            editor.commit();
-
-
-            SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-            editor.putString("yanZhengma3",yanZhengma3.getText().toString());
-            Log.d("myapp","同学3的验证码"+yanZhengma3.getText().toString());
-            editor.commit();
-
-
-            Intent intent = new Intent(TogetherSlelect.this, Dormitorys.class);
+            Intent intent = new Intent(SanRen.this, Select.class);
             startActivity(intent);
         }
 
