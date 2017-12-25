@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/tip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30.0dip"
+            android:text="请输入同住人信息"
+            android:textSize="25dip"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tongzhu1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tip">
+        <TextView
+            android:id="@+id/xuehao1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学号"
+            android:textSize="25dip" />
+        <TextView
+            android:id="@+id/jiaoyanma1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="校验码"
+            android:textSize="25dip"
+            android:layout_marginTop="67dp"
+            android:layout_below="@+id/xuehao1"
+            android:layout_alignLeft="@+id/xuehao1"
+            android:layout_alignStart="@+id/xuehao1" />
+        <EditText
+            android:id="@+id/xiexuehao1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/xuehao1"
+            android:layout_alignBottom="@+id/xuehao1"
+            android:layout_toRightOf="@+id/xuehao1"
+            android:layout_marginLeft="26dp"
+            android:layout_marginStart="26dp"
+            />
+        <EditText
+            android:id="@+id/xiejiaoyanma1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/jiaoyanma1"
+            android:layout_alignBottom="@+id/jiaoyanma1"
+            android:layout_alignLeft="@+id/xiexuehao1"
+            android:layout_alignStart="@+id/xiexuehao1"
+            android:layout_alignRight="@+id/xiexuehao1"
+            android:layout_alignEnd="@+id/xiexuehao1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tongzhu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tongzhu1">
+        <TextView
+            android:id="@+id/xuehao2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学号"
+            android:textSize="25dip" />
+        <TextView
+            android:id="@+id/jiaoyanma2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="校验码"
+            android:textSize="25dip"
+            android:layout_marginTop="67dp"
+            android:layout_below="@+id/xuehao2"
+            android:layout_alignLeft="@+id/xuehao2"
+            android:layout_alignStart="@+id/xuehao2" />
+        <EditText
+            android:id="@+id/xiexuehao2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/xuehao2"
+            android:layout_alignBottom="@+id/xuehao2"
+            android:layout_toRightOf="@+id/xuehao2"
+            android:layout_marginLeft="26dp"
+            android:layout_marginStart="26dp"
+            />
+        <EditText
+            android:id="@+id/xiejiaoyanma2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/jiaoyanma2"
+            android:layout_alignBottom="@+id/jiaoyanma2"
+            android:layout_alignLeft="@+id/xiexuehao2"
+            android:layout_alignStart="@+id/xiexuehao2"
+            android:layout_alignRight="@+id/xiexuehao2"
+            android:layout_alignEnd="@+id/xiexuehao2" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tongzhu3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tongzhu2">
+        <TextView
+            android:id="@+id/xuehao3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学号"
+            android:textSize="25dip" />
+        <TextView
+            android:id="@+id/jiaoyanma3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="校验码"
+            android:textSize="25dip"
+            android:layout_marginTop="67dp"
+            android:layout_below="@+id/xuehao3"
+            android:layout_alignLeft="@+id/xuehao3"
+            android:layout_alignStart="@+id/xuehao3" />
+        <EditText
+            android:id="@+id/xiexuehao3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/xuehao3"
+            android:layout_alignBottom="@+id/xuehao3"
+            android:layout_toRightOf="@+id/xuehao3"
+            android:layout_marginLeft="26dp"
+            android:layout_marginStart="26dp"
+            />
+        <EditText
+            android:id="@+id/xiejiaoyanma3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/jiaoyanma3"
+            android:layout_alignBottom="@+id/jiaoyanma3"
+            android:layout_alignLeft="@+id/xiexuehao3"
+            android:layout_alignStart="@+id/xiexuehao3"
+            android:layout_alignRight="@+id/xiexuehao3"
+            android:layout_alignEnd="@+id/xiexuehao3" />
+    </RelativeLayout>
+</RelativeLayout>

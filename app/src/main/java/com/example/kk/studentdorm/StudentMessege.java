@@ -6,12 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kk.util.SslUtils;
@@ -98,7 +95,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.if_ok);
+        setContentView(R.layout.messege);
 
         chaxunBtn=(Button) findViewById(R.id.chaxun);      //查询按钮
         chaxunBtn.setOnClickListener(this);
@@ -114,7 +111,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.chaxun){
-            Intent intent = new Intent(StudentMessege.this, ChuangWei.class);
+            Intent intent = new Intent(StudentMessege.this, RenShu.class);
             startActivity(intent);
             finish();
         }

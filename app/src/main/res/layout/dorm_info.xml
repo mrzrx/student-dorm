@@ -6,9 +6,8 @@
         android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="45.0dip"
-        android:background="#ffcd2626"
-        android:gravity="center_vertical"/>
-
+        android:background="#2693cd"
+        android:gravity="center_vertical">
     <TextView
         android:id="@+id/title_app_name"
         android:layout_width="match_parent"
@@ -19,42 +18,47 @@
         android:text="学生选宿舍系统"
         android:textColor="#ffffffff"
         android:textSize="22.0sp" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title">
     <ImageView
         android:id="@+id/picture1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/title"
         android:background="@drawable/background"/>
-    
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="提示：选宿舍之前请认真阅读相关注意事项,点击下方按钮开始选宿舍"
+        android:textColor="#cd2634"
+        android:textSize="20.0sp" />
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/tip"
+        android:text="1、开放时间\n男生：2018-08-30 15:00:00~2018-09-01 12:00:00\n女生：2018-08-28 14:00:00~2018-09-01 12:00:00\n
+2、办理多人住宿时需要提供校验码，请勿透露给非同住人！\n3、本系统仅限大兴校区新生使用！"
+        android:textSize="22dp"
+        />
+    </RelativeLayout>
+
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80.0dip"
+        android:layout_marginBottom="70.0dip"
         android:text="开始选宿舍"
-        android:background="#ffcd2626"
+        android:background="#262ccd"
         android:textColor="#ffffffff"/>
-
-
-    <TextView
-        android:id="@+id/tips"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/login"
-        android:layout_below="@+id/title"
-        android:gravity="center"
-        android:text="  尊敬的用户，您好！
-        选宿舍之前请认真阅读相关注意事项,预祝您选宿舍成功！
-
-
-                                                       点击下方按钮开始选宿舍"
-        android:textColor="#ffffffff"
-        android:textSize="22.0sp" />
-
-
 </RelativeLayout>
 
 
