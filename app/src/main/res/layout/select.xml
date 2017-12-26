@@ -47,5 +47,14 @@
    </RelativeLayout>
 
 
+   <Button
+       android:id="@+id/queding"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_marginBottom="13dp"
+       android:layout_centerHorizontal="true"
+       android:text="确定"/>
+
 
 </RelativeLayout>

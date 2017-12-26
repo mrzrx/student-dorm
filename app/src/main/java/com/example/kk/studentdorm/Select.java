@@ -39,13 +39,14 @@ import java.util.Map;
 
 public class Select extends Activity implements View.OnClickListener{
     private static final int CHUANGWEI =1;
-    private static final int SUCCESS =1;
+    private static final int SUCCESS =2;
     private HttpURLConnection connect;
-    private int errcode=1;
+    private int errcode1=1,errcode2=1;
     private String data;
     private String gender;
     private ListView mList;
     private ImageView backBtn;
+    private Button jixuBtn;
 
 
 
@@ -56,7 +57,7 @@ public class Select extends Activity implements View.OnClickListener{
                     String responseStr=(String)msg.obj;
                     try {                                   //JSON解析
                         JSONObject obj = new JSONObject(responseStr);
-                        errcode = obj.getInt("errcode");
+                        errcode1 = obj.getInt("errcode");
                         data = obj.getString("data");
                         JSONObject obj1 = new JSONObject(data);
 
@@ -70,29 +71,29 @@ public class Select extends Activity implements View.OnClickListener{
                         mList=(ListView)findViewById(R.id.list);
                         ArrayAdapter<String> adapter=new ArrayAdapter<String>(Select.this,android.R.layout.simple_list_item_1,data_chuanwei);
                         mList.setAdapter(adapter);
-                       /* mList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+                        mList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View v, int i, long l){
-                                //switch (i) {
                                     if (i== 0) {
                                         SharedPreferences.Editor editor = getSharedPreferences("config", MODE_PRIVATE).edit();
                                         editor.putInt("Dormitory", 5);
                                         editor.commit();
-                                       // initview();
+                                        //initview();
                                     }
 
                                     if (i==1) {
                                         SharedPreferences.Editor editor = getSharedPreferences("config", MODE_PRIVATE).edit();
                                         editor.putInt("Dormitory", 8);
                                         editor.commit();
-                                       // initview();
+                                        //initview();
                                     }
 
                                     if(i==2) {
                                         SharedPreferences.Editor editor = getSharedPreferences("config", MODE_PRIVATE).edit();
                                         editor.putInt("Dormitory", 9);
                                         editor.commit();
-                                        //initview();
+                                       // initview();
                                     }
 
                                     if(i==3) {
@@ -110,29 +111,49 @@ public class Select extends Activity implements View.OnClickListener{
                                     }
 
                             }
-                        });          */
+                        });
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+
+                case SUCCESS:
+                    String responseStr1=(String)msg.obj;
+                    try {                                                    //JSON解析
+                        JSONObject obj = new JSONObject(responseStr1);
+                        errcode2 = obj.getInt("errcode");
+                        if(errcode2==0){
+                            //Toast.makeText(Dormitorys.this, "选宿舍成功", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Select.this, Success.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            //Toast.makeText(Dormitorys.this, "选宿舍失败，请重新选宿舍", Toast.LENGTH_LONG).show();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    default:
+                        break;
             }
         }
     };
 
 
 
-   /* private Handler mHandler1 =new Handler(){
+    /*private Handler mHandler1 =new Handler(){
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
                 case SUCCESS:
                     String responseStr=(String)msg.obj;
-                    Log.d("myapp","查询结果"+responseStr);
                     try {                                                    //JSON解析
                         JSONObject obj = new JSONObject(responseStr);
-                        errcode = obj.getInt("errcode");
-                        if(errcode==0){
+                        errcode2 = obj.getInt("errcode");
+                        if(errcode2==0){
                             //Toast.makeText(Dormitorys.this, "选宿舍成功", Toast.LENGTH_LONG).show();
-                            //跳转到页
                             Intent intent = new Intent(Select.this, MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -140,14 +161,13 @@ public class Select extends Activity implements View.OnClickListener{
                             //Toast.makeText(Dormitorys.this, "选宿舍失败，请重新选宿舍", Toast.LENGTH_LONG).show();
                         }
 
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
             }
         }
-    };         */
-
+    };
+*/
 
 
 
@@ -159,6 +179,9 @@ public class Select extends Activity implements View.OnClickListener{
         backBtn=(ImageView)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
 
+        jixuBtn=(Button)findViewById(R.id.queding);
+        jixuBtn.setOnClickListener(this);
+
         //获取登陆人性别
         SharedPreferences sharedPreferences=getSharedPreferences("config",MODE_PRIVATE);
         String xingbie=sharedPreferences.getString("xingBie","");
@@ -168,14 +191,14 @@ public class Select extends Activity implements View.OnClickListener{
             gender="2";
         }
 
-        final String ip2 = "https://api.mysspku.com/index.php/V1/MobileCourse/getRoom?gender="+gender;
+        final String ip1 = "https://api.mysspku.com/index.php/V1/MobileCourse/getRoom?gender="+gender;
 
         new Thread(
                 new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            URL url=new URL(ip2);
+                            URL url=new URL(ip1);
                             if("https".equalsIgnoreCase(url.getProtocol())){
                                 SslUtils.ignoreSsl();
                             }
@@ -216,111 +239,102 @@ public class Select extends Activity implements View.OnClickListener{
             startActivity(intent);
             finish();
         }
-    }
 
+        if(v.getId()==R.id.queding){
+            Map<String, Object> map = new HashMap<String, Object>();
+            //获取办理人数
+            SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
+            int Num = sharedPreferences.getInt("Num", 0);
+            int total = Num + 1;
+            int i = Num;
 
-/*
-private void initview() {
-    //创建map类型
-    Map<String, Object> map = new HashMap<String, Object>();
-    //获取总人数信息
-    SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
-    int classMateNumbe = sharedPreferences.getInt("classMateNumbe", 0);
-    int totalNM = classMateNumbe + 1;
-    int i = classMateNumbe;
+            map.put("num", total);
+            //获取学号校验码
+            String usercode = sharedPreferences.getString("usercode", "");
+            map.put("stuid", usercode);
+            if (i > 0) {
+                String xueHao1 = sharedPreferences.getString("xueHao1", "");
+                map.put("stu1id", xueHao1);
+                String jiaoYan1 = sharedPreferences.getString("jiaoYan1", "");
+                map.put("v1code", jiaoYan1);
+                i--;
+            }
+            if (i > 0) {
+                String xueHao2 = sharedPreferences.getString("xueHao2", "");
+                map.put("stu2id", xueHao2);
+                String jiaoYan2 = sharedPreferences.getString("jiaoYan2", "");
+                map.put("v2code", jiaoYan2);
+                i--;
+            }
+            if (i > 0) {
+                String xueHao3 = sharedPreferences.getString("xueHao3", "");
+                map.put("stu3id", xueHao3);
+                String jiaoYan3 = sharedPreferences.getString("jiaoYan3", "");
+                map.put("v3code", jiaoYan3);
+                i--;
+            }
 
-    Log.d("myapp", "办理人总数" + totalNM);
-    map.put("num", totalNM);
-    //获取办理人
-    String usercode = sharedPreferences.getString("usercode", "");
-    Log.d("myapp", "办理人id" + usercode);
-    map.put("stuid", usercode);
-    if (i > 0) {
-        String xueHao1 = sharedPreferences.getString("xueHao1", "");
-        map.put("stu1id", xueHao1);
-        String yanZhengma1 = sharedPreferences.getString("yanZhengma1", "");
-        map.put("v1code", yanZhengma1);
-        i--;
-    }
-    if (i > 0) {
-        String xueHao2 = sharedPreferences.getString("xueHao2", "");
-        map.put("stu2id", xueHao2);
-        String yanZhengma2 = sharedPreferences.getString("yanZhengma2", "");
-        map.put("v2code", yanZhengma2);
-        i--;
-    }
-    if (i > 0) {
-        String xueHao3 = sharedPreferences.getString("xueHao3", "");
-        map.put("stu3id", xueHao3);
-        String yanZhengma3 = sharedPreferences.getString("yanZhengma2", "");
-        map.put("v3code", yanZhengma3);
-        i--;
-    }
-    if (i > 0) {
-        String xueHao4 = sharedPreferences.getString("xueHao4", "");
-        map.put("stu4id", xueHao4);
-        String yanZhengma4 = sharedPreferences.getString("yanZhengma4", "");
-        map.put("v4code", yanZhengma4);
-        i--;
-    }
-    int DormitoryNum = sharedPreferences.getInt("Dormitory", 0);
-    map.put("buildingNo", DormitoryNum);
-    Log.d("myapp", "map里的值" + map);
+            int Dormitory = sharedPreferences.getInt("Dormitory", 0);
+            map.put("buildingNo", Dormitory);
 
-    //连接网络
-    StringBuffer sbRequest = new StringBuffer();
-    if (map != null && map.size() > 0) {
-        for (String key : map.keySet()) {
-            sbRequest.append(key + "=" + map.get(key) + "&");
-        }
-    }
-    final String request = sbRequest.substring(0, sbRequest.length() - 1);
-    final String ip3 = "https://api.mysspku.com/index.php/V1/MobileCourse/SelectRoom";
-    new Thread(
-            new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        URL url = new URL(ip3);
-                        if ("https".equalsIgnoreCase(url.getProtocol())) {
-                            SslUtils.ignoreSsl();
-                        }
-                        connect = (HttpURLConnection) url.openConnection();
-                        connect.setRequestMethod("POST");
-                        //通过正文发送数据
-                        OutputStream os = connect.getOutputStream();
-                        os.write(request.getBytes());
-                        os.flush();
-
-                        InputStream in = connect.getInputStream();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                        StringBuilder response = new StringBuilder();
-                        String str;
-                        while ((str = reader.readLine()) != null) {
-                            response.append(str);
-                            Log.d("myapp", str);
-                        }
-                        String responseStr = response.toString();
-                        Log.d("myapp", "选宿舍结果" + responseStr);
-
-                        //将结果传给主线程
-                        Message msg = new Message();
-                        msg.what = SUCCESS;
-                        msg.obj = responseStr;
-                        mHandler1.sendMessage(msg);
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
+            //连接网络
+            StringBuffer sbRequest = new StringBuffer();
+            if (map != null && map.size() > 0) {
+                for (String key : map.keySet()) {
+                    sbRequest.append(key + "=" + map.get(key) + "&");
                 }
             }
-    ).start();
+            final String request = sbRequest.substring(0, sbRequest.length() - 1);
+            final String ip2 = "https://api.mysspku.com/index.php/V1/MobileCourse/SelectRoom";
+            new Thread(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                URL url = new URL(ip2);
+                                if ("https".equalsIgnoreCase(url.getProtocol())) {
+                                    SslUtils.ignoreSsl();
+                                }
+                                connect = (HttpURLConnection) url.openConnection();
+                                connect.setRequestMethod("POST");
+                                //通过正文发送数据
+                                OutputStream os = connect.getOutputStream();
+                                os.write(request.getBytes());
+                                os.flush();
 
-}       */
+                                InputStream in = connect.getInputStream();
+                                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                                StringBuilder response = new StringBuilder();
+                                String str;
+                                while ((str = reader.readLine()) != null) {
+                                    response.append(str);
+                                }
+                                String responseStr = response.toString();
+
+                                //将结果传给主线程
+                                Message msg = new Message();
+                                msg.what = SUCCESS;
+                                msg.obj = responseStr;
+                                mHandler.sendMessage(msg);
+                            } catch (MalformedURLException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+            ).start();
+
+        }
+
+    }
+
+
+
+
 
 
 }

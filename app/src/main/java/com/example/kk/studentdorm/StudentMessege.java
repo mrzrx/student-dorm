@@ -119,7 +119,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
         }
 
 
-        if(v.getId()== R.id.fanhui){
+        if(v.getId()== R.id.back){
             // 清除存储信息
            /* SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
             editor.putInt("logInFlag", 1);

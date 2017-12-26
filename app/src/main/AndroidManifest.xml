@@ -34,6 +34,7 @@
         <activity android:name=".SanRen"></activity>
 
         <activity android:name=".SiRen"></activity>
+        <activity android:name=".Success"></activity>
     </application>
 
 </manifest>
