@@ -38,7 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/renshu_title"
-        android:background="#ffffffff">
+        android:background="#ffffffff"
+        android:listSelector="#939eff">
     </ListView>
 
 </RelativeLayout>

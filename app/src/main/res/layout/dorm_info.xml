@@ -20,10 +20,15 @@
         android:textSize="22.0sp" />
     </RelativeLayout>
 
+
+
+<RelativeLayout
+    android:layout_below="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title">
+        android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tip"
@@ -32,14 +37,14 @@
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="注意事项"
-        android:textSize="25.0sp"
+        android:textSize="30.0sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
     <TextView
         android:id="@+id/tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/tip"
         android:text="1、开放时间\n男生：2018-08-30 15:00:00~2018-09-01 12:00:00\n女生：2018-08-28 14:00:00~2018-09-01 12:00:00\n\n
 2、办理多人住宿时需要提供校验码，请勿透露给非同住人！\n\n3、本系统仅限大兴校区新生使用！"
@@ -52,9 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70.0dip"
+        android:layout_marginBottom="40.0dip"
         android:text="开始选宿舍" />
 </RelativeLayout>
 
-
+</RelativeLayout>
 

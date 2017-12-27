@@ -37,64 +37,64 @@
 
     <RelativeLayout
         android:id="@+id/studentmessege"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/title">
     <TextView
         android:id="@+id/xuehao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="学号：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/xingming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xuehao"
         android:text="姓名：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/xingbie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xingming"
         android:text="性别：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/xiaoqu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xingbie"
         android:text="校区：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/nianji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/xiaoqu"
         android:text="年级：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/jiaoyanma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nianji"
         android:text="校验码：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/louhao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/jiaoyanma"
         android:text="已选楼号：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/sushehao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/louhao"
         android:text="已选宿舍号：**"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
     </RelativeLayout>
 
 
@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="33dp"
+            android:layout_marginBottom="40dp"
             android:layout_centerHorizontal="true"
             android:text="继续"/>
 

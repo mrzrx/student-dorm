@@ -48,8 +48,8 @@ public class LogIn extends Activity implements View.OnClickListener{
                         e.printStackTrace();
                     }
 
-                    //判断用户名密码是否正确
-                    if (errcode==0) {
+
+                    if (errcode==0) {                             //判断用户名密码是否正确，若正确跳转到信息界面
                         SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
                         editor.putInt("logInFlag", 0);
                         editor.commit();
@@ -99,7 +99,8 @@ public class LogIn extends Activity implements View.OnClickListener{
             editor.putString("password", mima);
             editor.commit();
 
-            //检验网络
+
+            //检查网络状态
             if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
                 queryLogin(xuehao, mima);       //如果网络正常，获取网络数据
             } else {
@@ -113,7 +114,7 @@ public class LogIn extends Activity implements View.OnClickListener{
 
 
 
-    public void queryLogin(String username, String password) {          //登录验证
+    public void queryLogin(String username, String password) {          //获取网络数据
         final  String address = "https://api.mysspku.com/index.php/V1/MobileCourse/Login?"+"username=" + username
                 + "&password=" + password;
         new Thread(new Runnable() {

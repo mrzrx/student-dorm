@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,37 +26,23 @@ public class SiRen extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.siren);
 
-        back=(ImageView)findViewById(R.id.back);
+        back=(ImageView)findViewById(R.id.back);          //返回按钮
         back.setOnClickListener(this);
 
-        jixuBtn=(Button) findViewById(R.id.jixu);
+        jixuBtn=(Button) findViewById(R.id.jixu);          //继续按钮
         jixuBtn.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.back){
-            //清空同学储存信息
-           /* SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-            editor.putString("xueHao1","");
-            editor.putString("xueHao2","");
-            editor.putString("xueHao3","");
-            editor.putString("xueHao4","");
-            editor.putString("yanZhengma1","");
-            editor.putString("yanZhengma2","");
-            editor.putString("yanZhengma3","");
-            editor.putString("yanZhengma4","");
-            classMateNumbe=0;
-            editor.putInt("classMateNumbe",classMateNumbe);
-            editor.commit();     */
-
+        if(v.getId()==R.id.back){              //返回到信息界面
             Intent intent = new Intent(SiRen.this, StudentMessege.class);
             startActivity(intent);
             finish();
         }
 
-        if(v.getId()==R.id.jixu){
+        if(v.getId()==R.id.jixu){              //跳转到选择界面
             xueHao1=(EditText)findViewById(R.id.xiexuehao1);
             xueHao2=(EditText)findViewById(R.id.xiexuehao2);
             xueHao3=(EditText)findViewById(R.id.xiexuehao3);
@@ -65,7 +50,7 @@ public class SiRen extends Activity implements View.OnClickListener{
             jiaoYan2=(EditText)findViewById(R.id.xiejiaoyanma2);
             jiaoYan3=(EditText)findViewById(R.id.xiejiaoyanma3);
 
-            // 存储同学信息
+            // 存储同住人信息
             SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
             editor.putString("xueHao1",xueHao1.getText().toString());
             editor.putString("jiaoYan1",jiaoYan1.getText().toString());
@@ -75,7 +60,6 @@ public class SiRen extends Activity implements View.OnClickListener{
             editor.putString("jiaoYan3",jiaoYan3.getText().toString());
             editor.putInt("Num",4);
             editor.commit();
-
 
             Intent intent = new Intent(SiRen.this, Select.class);
             startActivity(intent);

@@ -3,36 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/denglu_title"
+    <RelativeLayout
+        android:id="@+id/denglu_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffcd2626"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/title_text"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"/>
+        <ImageView
+            android:id="@+id/fanhui"
+            android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="#ffcd2626"
-            android:layout_alignParentTop="true">
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="登录"
-                android:textColor="#ffffffff"
-                android:textSize="20dp"/>
-            <ImageView
-                android:id="@+id/fanhui"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/base_action_bar_back_normal"/>
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:layout_toRightOf="@+id/fanhui"
-                android:background="#A71717"
-                android:gravity="center"/>
-        </RelativeLayout>
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/base_action_bar_back_normal"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@+id/fanhui"
+            android:background="#A71717"
+            android:gravity="center"/>
+    </RelativeLayout>
 
 
     <TextView
@@ -90,6 +90,6 @@
         android:layout_height="wrap_content"
         android:text="登录"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="40dp"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

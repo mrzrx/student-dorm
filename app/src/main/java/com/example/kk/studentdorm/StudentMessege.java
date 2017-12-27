@@ -3,7 +3,6 @@ package com.example.kk.studentdorm;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,7 +11,9 @@ import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.kk.util.NetUtil;
 import com.example.kk.util.SslUtils;
 
 import org.json.JSONException;
@@ -30,11 +31,12 @@ import java.net.URL;
  */
 
 public class StudentMessege extends Activity implements ViewStub.OnClickListener{
-    private static final int RESEARCH =1;
+    private static final int JIXU =1;
     private int errcode=1;
     private HttpURLConnection connect;
     private String data;
 
+    private int iii;
     private Button chaxunBtn;
     private ImageView fanhuiBtn;
 
@@ -43,7 +45,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
     private Handler mHandler =new Handler(){
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
-                case RESEARCH:
+                case JIXU:
                     String responseStr=(String)msg.obj;
                     try {                                    //JSON解析
                         JSONObject obj = new JSONObject(responseStr);
@@ -59,14 +61,14 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
                         louHao=(TextView)findViewById(R.id.louhao);
                         suSheHao=(TextView)findViewById(R.id.sushehao);
 
-                        xueHao.setText("学号："+obj1.getString("studentid"));
+                        xueHao.setText("学号："+obj1.getString("studentid"));     //更新学生信息
                         xingMing.setText("姓名："+obj1.getString("name"));
                         xingBie.setText("性别："+obj1.getString("gender"));
                         xiaoQu.setText("校区："+obj1.getString("location"));
                         nianJi.setText("年级："+obj1.getString("grade"));
                         jiaoYanMa.setText("验证码："+obj1.getString("vcode"));
-                        int i = Integer.parseInt(obj1.getString("studentid"));
-                        if(i%2==0){
+                         iii = Integer.parseInt(obj1.getString("studentid"));
+                        if(iii%2==0){
                             louHao.setText("已选楼号："+obj1.getString("building"));
                             suSheHao.setText("已选宿舍号："+obj1.getString("room"));
                         }else{
@@ -74,7 +76,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
                             suSheHao.setText("已选宿舍号：未选");
                         }
 
-                        // 存储解析结果
+                        // 存储
                         SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
                         editor.putString("xueHao", obj1.getString("studentid"));
                         editor.putString("xingMing", obj1.getString("name"));
@@ -85,10 +87,12 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
                         editor.putString("louHao", obj1.getString("building"));
                         editor.putString("suSheHao", obj1.getString("room"));
                         editor.commit();
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    break;
+                default:
+                    break;
             }
         }
     };
@@ -99,39 +103,43 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messege);
 
-        chaxunBtn=(Button) findViewById(R.id.jixu);      //查询按钮
+        chaxunBtn=(Button) findViewById(R.id.jixu);      //继续按钮
         chaxunBtn.setOnClickListener(this);
 
-        fanhuiBtn=(ImageView) findViewById(R.id.back);                 //返回按钮
+        fanhuiBtn=(ImageView) findViewById(R.id.back);         //返回按钮
         fanhuiBtn.setOnClickListener(this);
 
-        queryMessege();       //查询个人信息
+        if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
+            queryMessege();       //如果网络正常，获取网络数据
+        } else {
+            Toast.makeText(StudentMessege.this, "网络挂了！", Toast.LENGTH_LONG).show();
+        }
+
     }
 
 
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.jixu){
-            Intent intent = new Intent(StudentMessege.this, RenShu.class);
-            startActivity(intent);
-            finish();
+        if(v.getId()==R.id.jixu){           //跳转到人数界面
+            if(iii%2==0){
+                Intent intent = new Intent(StudentMessege.this, Success.class);  //如果已经选过，跳转
+                startActivity(intent);
+                finish();
+            }else {
+                //检查网络状态
+                if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE) {
+                    Intent intent = new Intent(StudentMessege.this, RenShu.class);  //如果网络正常，跳转
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(StudentMessege.this, "网络挂了！", Toast.LENGTH_LONG).show();
+                }
+            }
         }
 
 
-        if(v.getId()== R.id.back){
-            // 清除存储信息
-           /* SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-            editor.putInt("logInFlag", 1);
-            editor.putString("usercode", "");
-            editor.putString("password",  "");
-            editor.putString("xingMing","");
-            editor.putString("xingBie", "");
-            editor.putString("yanZhengma", "");
-            editor.putString("xiaoQu", "");
-            editor.putString("nianJi","");
-            editor.commit();     */
-
+        if(v.getId()== R.id.back){          //返回到登录界面
             Intent intent = new Intent(StudentMessege.this, LogIn.class);
             startActivity(intent);
             finish();
@@ -142,8 +150,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
 
 
 
-    private void queryMessege(){                       //查询个人信息
-        //读取学号
+    private void queryMessege(){                       //获取网络数据
         SharedPreferences sharedPreferences=getSharedPreferences("config",MODE_PRIVATE);
         String usercode=sharedPreferences.getString("usercode","");
 
@@ -171,7 +178,7 @@ public class StudentMessege extends Activity implements ViewStub.OnClickListener
 
                             //将结果传给主线程
                             Message msg = new Message();
-                            msg.what=RESEARCH;
+                            msg.what=JIXU;
                             msg.obj=responseStr;
                             mHandler.sendMessage(msg);
 

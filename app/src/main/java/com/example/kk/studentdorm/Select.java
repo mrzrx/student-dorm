@@ -3,13 +3,13 @@ package com.example.kk.studentdorm;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.util.Log;
+
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -53,7 +53,7 @@ public class Select extends Activity implements View.OnClickListener{
     private Handler mHandler =new Handler(){
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
-                case CHUANGWEI:
+                case CHUANGWEI:                 //显示剩余床位信息
                     String responseStr=(String)msg.obj;
                     try {                                   //JSON解析
                         JSONObject obj = new JSONObject(responseStr);
@@ -69,12 +69,11 @@ public class Select extends Activity implements View.OnClickListener{
                         data_chuanwei[4]="9号楼剩余床位数："+obj1.getString("9");
 
                         mList=(ListView)findViewById(R.id.list);
-                        ArrayAdapter<String> adapter=new ArrayAdapter<String>(Select.this,android.R.layout.simple_list_item_1,data_chuanwei);
+                        final ArrayAdapter<String> adapter=new ArrayAdapter<String>(Select.this,android.R.layout.simple_list_item_1,data_chuanwei);
                         mList.setAdapter(adapter);
-
                         mList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                             @Override
-                            public void onItemClick(AdapterView<?> adapterView, View v, int i, long l){
+                            public void onItemClick(AdapterView<?> adapterView, View v, int i, long l){           //单击相应列表项，存储宿舍楼号
                                     if (i== 0) {
                                         SharedPreferences.Editor editor = getSharedPreferences("config", MODE_PRIVATE).edit();
                                         editor.putInt("Dormitory", 5);
@@ -109,33 +108,32 @@ public class Select extends Activity implements View.OnClickListener{
                                         editor.commit();
                                        // initview();
                                     }
-
                             }
                         });
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                  break;
 
-
-                case SUCCESS:
+                case SUCCESS:                     //接受是否选择成功信息
                     String responseStr1=(String)msg.obj;
                     try {                                                    //JSON解析
                         JSONObject obj = new JSONObject(responseStr1);
                         errcode2 = obj.getInt("errcode");
                         if(errcode2==0){
-                            //Toast.makeText(Dormitorys.this, "选宿舍成功", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Select.this, Success.class);
+                            Toast.makeText(Select.this, "选择成功", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Select.this, Success.class);      //跳转到成功界面
                             startActivity(intent);
                             finish();
                         }else{
-                            //Toast.makeText(Dormitorys.this, "选宿舍失败，请重新选宿舍", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Select.this, "选择失败，请检查网络状态或操作步骤是否有误", Toast.LENGTH_LONG).show();
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
+                        break;
                     default:
                         break;
             }
@@ -144,31 +142,6 @@ public class Select extends Activity implements View.OnClickListener{
 
 
 
-    /*private Handler mHandler1 =new Handler(){
-        public void handleMessage(android.os.Message msg){
-            switch (msg.what){
-                case SUCCESS:
-                    String responseStr=(String)msg.obj;
-                    try {                                                    //JSON解析
-                        JSONObject obj = new JSONObject(responseStr);
-                        errcode2 = obj.getInt("errcode");
-                        if(errcode2==0){
-                            //Toast.makeText(Dormitorys.this, "选宿舍成功", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Select.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            //Toast.makeText(Dormitorys.this, "选宿舍失败，请重新选宿舍", Toast.LENGTH_LONG).show();
-                        }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-            }
-        }
-    };
-*/
-
 
 
     @Override
@@ -176,14 +149,13 @@ public class Select extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select);
 
-        backBtn=(ImageView)findViewById(R.id.back);
+        backBtn=(ImageView)findViewById(R.id.back);       //返回按钮
         backBtn.setOnClickListener(this);
 
-        jixuBtn=(Button)findViewById(R.id.queding);
+        jixuBtn=(Button)findViewById(R.id.queding);       //确定按钮
         jixuBtn.setOnClickListener(this);
 
-        //获取登陆人性别
-        SharedPreferences sharedPreferences=getSharedPreferences("config",MODE_PRIVATE);
+        SharedPreferences sharedPreferences=getSharedPreferences("config",MODE_PRIVATE);     //获取剩余床位数
         String xingbie=sharedPreferences.getString("xingBie","");
         if(xingbie.equals("男")) {
             gender ="";
@@ -234,22 +206,22 @@ public class Select extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.back){
+        if(v.getId()==R.id.back){              //返回到人数选择界面
             Intent intent = new Intent(Select.this, RenShu.class);
             startActivity(intent);
             finish();
         }
 
-        if(v.getId()==R.id.queding){
+        if(v.getId()==R.id.queding){              //向网络发送信息
             Map<String, Object> map = new HashMap<String, Object>();
-            //获取办理人数
+            //办理人数
             SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
             int Num = sharedPreferences.getInt("Num", 0);
             int total = Num + 1;
             int i = Num;
-
             map.put("num", total);
-            //获取学号校验码
+
+            //学号校验码
             String usercode = sharedPreferences.getString("usercode", "");
             map.put("stuid", usercode);
             if (i > 0) {
@@ -277,7 +249,6 @@ public class Select extends Activity implements View.OnClickListener{
             int Dormitory = sharedPreferences.getInt("Dormitory", 0);
             map.put("buildingNo", Dormitory);
 
-            //连接网络
             StringBuffer sbRequest = new StringBuffer();
             if (map != null && map.size() > 0) {
                 for (String key : map.keySet()) {
@@ -331,9 +302,6 @@ public class Select extends Activity implements View.OnClickListener{
         }
 
     }
-
-
-
 
 
 

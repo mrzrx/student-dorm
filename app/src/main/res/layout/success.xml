@@ -3,10 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="已办理成功！"
+        android:layout_height="45dp"
+        android:background="#ffcd2626"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="办理结果"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/base_action_bar_back_normal"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@+id/back"
+            android:background="#A71717"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/title">
+    <TextView
+        android:id="@+id/cheng"
+        android:layout_below="@+id/tu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="办理成功！"
         android:textSize="40dp"
         android:gravity="center"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/cheng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="报道当天凭录取通知书到对应宿舍楼前办理入住"
+        android:textSize="20dp"/>
+    <ImageView
+        android:id="@+id/tu"
+        android:layout_width="80pt"
+        android:layout_height="80pt"
+        android:src="@drawable/success"
+        android:layout_marginTop="20pt"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
 </RelativeLayout>
